@@ -1,0 +1,42 @@
+
+{% extends 'parent.html' %}
+
+{% block title %}Login | Maya Flowers {% endblock %}
+{% load static %}
+{% block content %}
+{% load mytags %}
+<div class="login_sec">
+	 <div class="container">
+		 <ol class="breadcrumb">
+		  <li><a href="{% url 'myhome' %}">Home</a></li>
+		  <li class="active">Login</li>
+		 </ol>
+		 <h2>Login</h2>
+		 <div class="col-md-6 log">
+				 <p>Welcome, please enter the following to continue.</p>
+				Current Date Time is {% current_time %}
+				 <form method="post">
+
+					 {% csrf_token %}
+					 {{ form }}
+					 <input type="hidden" name="next" value="{{ request.GET.next }}">
+					 <input type="submit" value="Login">
+					  <a class="acount-btn" href="{% url 'signup' %}">Create an Account</a>
+
+				 </form>
+				 <a href="#">Forgot Password ?</a>
+				 {% if messages %}
+					 	<ul>
+							{% for message in messages %}
+							<li>{{ message }}</li>
+							{% endfor %}
+						</ul>
+			     {% endif %}
+		 </div>
+
+		 <div class="clearfix"></div>
+	 </div>
+</div>
+<!---->
+
+{% endblock %}

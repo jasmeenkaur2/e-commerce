@@ -1,0 +1,90 @@
+
+{% extends 'parent.html' %}
+
+{% block title %}Shopping Cart | Maya Flowers {% endblock %}
+{% load static %}
+{% block content %}
+{% load mytags %}
+
+<!---->
+<div class="checkout">
+	 <div class="container">
+		 <ol class="breadcrumb">
+		  <li><a href="{% url 'myhome' %}">Home</a></li>
+		  <li class="active">Cart</li>
+		 </ol>
+		 <div class="col-md-9 product-price1">
+			 <div class="check-out">
+				 <div class=" cart-items">
+					{% if cartcount > 0 %}
+					 <h3>My Shopping Bag ({{ cartcount }})</h3>
+
+					 <div class="in-check" >
+						  <ul class="unit">
+
+							<li align="center"><span>Image</span></li>
+							<li align="center"><span>Product Name</span></li>
+							<li align="center"><span>Discounted Price</span></li>
+							<li align="center"><span>Qty</span></li>
+							<li align="center"><span>Total Cost</span></li>
+							<div class="clearfix"> </div>
+						  </ul>
+						 {% for data in cartdata %}
+						  <ul class="cart-header">
+
+							<li class="ring-in"><a href="{% url 'productdetail' data.productid.id %}" ><img src="{{ data.productid.Image1.url }}" class="img-responsive" alt=""></a>
+							</li>
+							<li><span>{{ data.productid.product_name }}</span></li>
+							<li><span>Rs. {{ data.price }}/-</span></li>
+							<li><span>{{ data.qty }}</span></li>
+							<li><span>{{ data.totalcost }}</span></li>
+							 <a href="{% url 'deletecart' data.id %}"><div class="close1"> </div></a>
+							<div class="clearfix"> </div>
+							</ul>
+							{% endfor %}
+					 </div>
+				  </div>
+				 {% else %}
+				 	<h3 align="center"> Your Shopping Cart is empty. </h3><br>
+				 {% endif %}
+			 </div>
+		 </div>
+		 {% if cartcount > 0 %}
+		 <div class="col-md-3 cart-total">
+			 <a class="continue" href="{% url 'myhome' %}">Continue Shopping</a>
+
+			 <h4 class="last-price">TOTAL</h4>
+			 <span class="total final">Rs. {{ cartsum.totalcost__sum }}/-</span>
+			 <div class="clearfix"></div>
+			 <a class="order" href="{% url 'checkout' %}">Place Order</a>
+			 <div class="total-item">
+
+				 <p><a href="#">Log In</a> to place order</p>
+			 </div>
+			</div>
+		 {% endif %}
+	 </div>
+</div>
+<!---->
+<div class="shoping">
+	 <div class="container">
+		 <div class="shpng-grids">
+			 <div class="col-md-4 shpng-grid">
+				 <h3>Free Shipping</h3>
+				 <p>On Order Over Rs999</p>
+			 </div>
+			 <div class="col-md-4 shpng-grid">
+				 <h3>Order Return</h3>
+				 <p>Return Within 14days</p>
+			 </div>
+			 <div class="col-md-4 shpng-grid">
+				 <h3>COD</h3>
+				 <p>Cash On Delivery</p>
+			 </div>
+			 <div class="clearfix"></div>
+		 </div>
+	 </div>
+</div>
+<!---->
+
+{% endblock %}

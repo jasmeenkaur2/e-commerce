@@ -1,0 +1,38 @@
+
+{% extends 'parent.html' %}
+
+{% block title %}Sub Categories | Shop Flowers, Cakes, Plants Online {% endblock %}
+{% load static %}
+{% block content %}
+
+<!---->
+<div class="bride-grids">
+	 <div class="container">
+		 <h2 align="center">Choose Sub Categories</h2>
+		 <br>
+		 {% if subcategorydata %}
+		 {% for data in subcategorydata %}
+		 <div class="col-md-4 bride-grid">
+			 <div class="content-grid l-grids">
+				 <figure class="effect-bubba">
+						<img src="{{ data.subcategory_image.url }}" alt=""/>
+					<a href="{% url 'products' %}?subcatid={{ data.id }}&catid={{data.category.id}}">
+					 <figcaption>
+							<h4>{{ data.subcategory_name }} </h4>
+							<p>Get the best deal</p>
+						</figcaption>
+					</a>
+				 </figure>
+				 <div class="clearfix"></div>
+				 <h3>{{ data.subcategory_name }}</h3>
+			 </div>
+		 </div>
+		 {% endfor %}
+		 {% else %}
+		 <h1>No sub categories added yet</h1>
+		 {% endif %}
+		 <div class="clearfix"></div>
+	 </div>
+</div>
+
+{% endblock %}

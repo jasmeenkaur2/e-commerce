@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+{% load mytags %}
+
+<html>
+<head>
+
+    <title>{% block title %} {% endblock %}</title>
+
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Wedding Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<script src="{% static 'js/simpleCart.min.js' %}"> </script>
+<!-- start menu -->
+<link href="{% static 'css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="{% static 'js/memenu.js' %}"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<!-- /start menu -->
+</head>
+<body>
+<!--header-->
+<div class="top_bg">
+	<div class="container">
+		<div class="header_top-sec">
+			<div class="top_right">
+				<ul>
+					<li><a href="#">help</a></li>|
+					<li><a href="{% url 'contact' %}">Contact</a></li>|
+					<li><a href="login.html">Track Order</a></li>
+				</ul>
+			</div>
+			<div class="top_left">
+				<ul>
+						{% if user.is_authenticated %}
+					<li class="top_link">Welcome {{ request.session.name }}
+					<li class="top_link"><a href="{% url 'previousorders' %}">My Orders</a></li>| &nbsp; <a href="{% url 'logout' %}">Logout</a></li>
+					{% else %}
+					<li class="top_link"><a href="{% url 'login' %}">My Account</a></li>
+					{% endif %}
+				</ul>
+			</div>
+				<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<div class="header-top">
+	 <div class="header-bottom">
+		 <div class="container">
+				<div class="logo">
+					<a href="{% url 'myhome' %}"><h1>Run For Cover!</h1></a>
+				</div>
+			 <!---->
+
+			 <div class="top-nav">
+				<ul class="memenu skyblue"><li class="active"><a href="{% url 'myhome' %}">Home</a></li>
+					<li class="grid"><a href="#">Genre</a>
+						<div class="mepanel">
+							<div class="row">
+								<div class="col1 me-one">
+									<h4>Shop</h4>
+									<ul>
+										{% fetchcategories %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					</li>
+					<li class="grid"><a href="{% url 'contact' %}">Contact</a></li>
+				</ul>
+				<div class="clearfix"> </div>
+			 </div>
+			 <!---->
+			 <div class="cart box_1">
+				 <a href="{% url 'showcart' %}">
+					<h3> <div class="total">
+					</div>
+					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></h3>
+				</a>
+			 	<div class="clearfix"> </div>
+			 </div>
+			 <div class="clearfix"> </div>
+			 <!---->
+			 </div>
+			<div class="clearfix"> </div>
+	  </div>
+</div>
+
+<!--child area starts-->
+
+{% block content %}
+
+
+{% endblock %}
+
+<!--child area ends-->
+
+
+
+ <div class="copywrite">
+	 <div class="container">
+			 <p>Copyright © Run for Cover!2022. All Rights Reserved | Design by Jasmeen Kaur</a></p>
+		 </div>
+</div>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,26 @@
+
+{% extends 'parent.html' %}
+
+{% block title %}Thanks for your order | Maya Flowers {% endblock %}
+{% load static %}
+{% block content %}
+
+
+<div class="contact">
+	  <div class="container">
+		 <ol class="breadcrumb">
+		  <li><a href="{% url 'myhome' %}">Home</a></li>
+		  <li class="active">Thanks</li>
+		 </ol>
+			<!---start-contact---->
+			<h3>Thanks</h3>
+		  <div class="section group">
+
+				<div class="col-md-6 span_2_of_3">
+					<h1>Your order is successful. Your order number is {{ orderno.id }} and mail result is {{ result }}</h1>
+				</div>
+		  </div>
+	  </div>
+ </div>
+<!---->
+{% endblock %}
