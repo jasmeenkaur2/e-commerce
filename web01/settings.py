@@ -137,7 +137,7 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'login'
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "amigospnb@gmail.com "
-EMAIL_HOST_PASSWORD = "jass_1968"
+EMAIL_HOST_USER = "your email address "
+EMAIL_HOST_PASSWORD = "email password"
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
