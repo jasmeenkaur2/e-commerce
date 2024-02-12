@@ -1,5 +1,5 @@
-permalink: /index.html
-# /index.html
+
+
 this project is an e-book store developed using python and django framework.
 Before running this project please make migrations and install required pacakages first.
 Screenshots of the project are given below:
